@@ -1,4 +1,4 @@
-import React, { useState, useRef, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import {
   Box,
   Button,
@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import AuthService from "./services/auth";
+import AuthService from "../../services/auth";
 
 const LoginPage: React.FC = () => {
 
@@ -50,7 +50,7 @@ const LoginPage: React.FC = () => {
       <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 8,}}>
         <Typography component="h1" variant="h5"> Login </Typography>
         <Box component="form" onSubmit={handleSubmit} mt={3}>
-          <TextField label="Email Address" margin="normal" required fullWidth autoComplete="email" onChange={(e) => setUsername(e.target.value)} value={username} autoFocus />
+          <TextField label="Username" margin="normal" required fullWidth autoComplete="email" onChange={(e) => setUsername(e.target.value)} value={username} autoFocus />
           <TextField label="Password" margin="normal" required fullWidth type="password" onChange={(e) => setPassword(e.target.value)} value={password} autoComplete="current-password" />
           <Button type="submit" variant="contained" sx={{ mt: 4, mb: 3 }}>Login</Button>
           <Button component={RouterLink} variant="text" to='/register' sx={{ mt: 4, mb: 3 }} >Register</Button>

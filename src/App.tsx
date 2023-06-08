@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './LoginPage';
-import RegistrationPage from './RegistrationPage';
-import Home from './Home';
-import './App.css';
+import LoginPage from './pages/login/LoginPage';
+import RegistrationPage from './pages/login/RegistrationPage';
+import Home from './pages/Home';
+import './stylesheets/App.css';
 // import { fakeAuthProvider } from "./auth";
 const App: React.FC = () => {
   return (
