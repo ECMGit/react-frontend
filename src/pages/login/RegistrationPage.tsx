@@ -3,9 +3,11 @@ import {
   Box,
   Button,
   Container,
+  FormHelperText,
   TextField,
   Typography,
 } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import AuthService from "../../services/auth";
 
@@ -52,8 +54,9 @@ const RegistrationPage: React.FC = () => {
           <TextField label="username" margin="normal" required fullWidth autoComplete="name" onChange={(e) => setUsername(e.target.value)} value={username} autoFocus />
           <TextField label="Email Address" margin="normal" required fullWidth autoComplete="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
           <TextField label="Password" margin="normal" required fullWidth type="password" autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} value={password}/>
-          <Button type="submit" variant="contained" sx={{ mt: 4, mb: 3 }}>Register</Button>
+          <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Register</LoadingButton>
           <Button component={RouterLink} variant="text" to='/login' sx={{ mt: 4, mb: 3 }} >Cancel</Button>
+          <FormHelperText>{message}</FormHelperText>
         </Box>
       </Box>
     </Container>);
