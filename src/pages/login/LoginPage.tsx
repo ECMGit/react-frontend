@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
     AuthService.login(username, password).then(
       () => {
         navigate("/home");
-        window.location.reload();
+        // window.location.reload();
       },
       (error) => {
         const resMessage =

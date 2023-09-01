@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const USER_API_URL = "http://localhost:9000/user/";
+// const USER_API_URL = "https://9429d5b9-a4ce-43d8-bf6b-637cc223febe.mock.pstmn.io/";
 
 const register = (username: string, email: string, password: string) => {
   return axios.post(USER_API_URL + "signup", {
@@ -17,7 +18,7 @@ const login = (username: string, password: string) => {
       password,
     })
     .then((response) => {
-      // alert(JSON.stringify(response.data)); // for debugging purposes
+      alert(JSON.stringify(response.data)); // for debugging purposes
       if (response.data.user) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
       }
