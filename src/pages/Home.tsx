@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Container } from '@mui/material';
+import api from '../services/server';
 
 interface User {
   username: string;
@@ -8,11 +9,17 @@ interface User {
 
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [jobs, setJobs] = useState([]); 
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("user") || "null");
     setUser(currentUser);
   }, []);
+
+  useEffect(() => {
+    api.getJobs().then(res => {setJobs(res)})
+  }, []);
+  
 
   return (
     <Container maxWidth="sm">
@@ -21,6 +28,17 @@ const Home: React.FC = () => {
       ) : (
         <Typography variant="h1">Please log in.</Typography>
       )}
+
+      <div>
+        Jobs
+        {
+          jobs.map(job => 
+          <div>
+            TA job
+          </div>)
+        }
+      </div>
+      
     </Container>
   );
 };
