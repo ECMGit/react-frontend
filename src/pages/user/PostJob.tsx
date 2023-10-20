@@ -69,7 +69,7 @@ const PostJob: React.FC = () => {
                     <TextField label="Notes" margin="normal" fullWidth onChange={(e) => { setNotes(e.target.value) }} />
                     <TextField label="Deadline" margin="normal" required fullWidth onChange={(e) => { setDeadline(e.target.value) }} />
                     <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Post Job</LoadingButton>
-                    <Button component={RouterLink} variant="text" to='/home' sx={{ mt: 4, mb: 3 }} >Cancel</Button>
+                    <Button component={RouterLink} variant="text" to='/jobs' sx={{ mt: 4, mb: 3 }} >Cancel</Button>
                     <FormHelperText>{message}</FormHelperText>
                 </Box>
             </Box>

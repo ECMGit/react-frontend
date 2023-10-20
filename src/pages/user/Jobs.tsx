@@ -14,8 +14,14 @@ const Jobs: React.FC = () => {
     const [jobs, setJobs] = useState([]); 
 
     useEffect(() => {
-        api.getJobs().then(res => {setJobs(res)})
+        api.getJobs().then(res => {
+            if (res !== undefined) {
+                setJobs(res)
+            }
+        })
       }, []);
+
+    const navigate = useNavigate();
 
     return (
         <Container>
@@ -28,6 +34,7 @@ const Jobs: React.FC = () => {
                         </div>)
                 }
             </Box>
+            <Button onClick={() => navigate('/post-job')}>Post Job</Button>
         </Container>
     );
 
