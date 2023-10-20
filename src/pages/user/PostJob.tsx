@@ -41,10 +41,6 @@ const PostJob: React.FC = () => {
         })
     }
 
-
-
-
-
     return (
         <Container maxWidth="sm">
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 8, }} >
@@ -70,16 +66,6 @@ const PostJob: React.FC = () => {
         </Container>
     );
 
-    function handleUploadClick() {
-        document.getElementById('profileUpload')?.click();
-    }
-
-    function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const file = event.target.files?.[0];
-        if (file) {
-            // Handle the file upload here
-        }
-    }
 };
 
 export default PostJob;
