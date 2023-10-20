@@ -5,15 +5,17 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Container, Typography, Avatar, Box, Input, TextField, FormHelperText, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
+import api from '../../services/server'
+
 
 const PostJob: React.FC = () => {
 
+    const [title, setTitle] = useState("");
     const [courseId, setCourseId] = useState("");
-    const [courseName, setCourseName] = useState("");
-    const [courseSchdule, setCourseSchedule] = useState("");
+    const [courseSchedule, setCourseSchedule] = useState("");
     const [totalHour, setTotalHour] = useState("");
     const [maxTaCount, setMaxTaCount] = useState("");
-    const [requiredCoursem, setRequiredCourse] = useState("");
+    const [requiredCourses, setRequiredCourse] = useState("");
     const [requiredSkills, setRequiredSkills] = useState("");
     const [TaStats, setTaStats] = useState("");
     const [notes, setNotes] = useState("");
@@ -24,9 +26,19 @@ const PostJob: React.FC = () => {
 
 
     const handleSubmit = () => {
-        console.log("submit form");
-
-
+        api.postJob({
+            title: title,
+            courseId: parseInt(courseId),
+            courseSchedule: courseSchedule,
+            totalHoursPerWeek: parseInt(totalHour),
+            maxNumberOfTAs: parseInt(maxTaCount),
+            requiredCourses: requiredCourses,
+            requiredSkills: requiredSkills,
+            TAStats: TaStats,
+            notes: notes,
+            deadlineToApply: new Date(deadline),
+            facultyId: 1, // TODO: Make this read the logged in user's ID
+        })
     }
 
 
@@ -40,10 +52,17 @@ const PostJob: React.FC = () => {
                     Register
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} mt={3}>
-                    <TextField label="" margin="normal" required fullWidth autoComplete="name" onChange={(e) => {}} autoFocus />
-                    <TextField label="Email Address" margin="normal" required fullWidth autoComplete="email" onChange={(e) => {} } />
-                    <TextField label="Password" margin="normal" required fullWidth type="password" autoComplete="new-password" onChange={(e) => {}} />
-                    <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Post Jobr</LoadingButton>
+                    <TextField label="Title" margin="normal" required fullWidth autoComplete="name" onChange={(e) => { setTitle(e.target.value) }} autoFocus />
+                    <TextField label="Course ID" margin="normal" required fullWidth onChange={(e) => { setCourseId(e.target.value) }} autoFocus />
+                    <TextField label="Course Schedule" margin="normal" required fullWidth onChange={(e) => { setCourseSchedule(e.target.value) }} />
+                    <TextField label="Total Hour" margin="normal" required fullWidth onChange={(e) => { setTotalHour(e.target.value) }} />
+                    <TextField label="Max TA Count" margin="normal" required fullWidth onChange={(e) => { setMaxTaCount(e.target.value) }} />
+                    <TextField label="Required Course" margin="normal" required fullWidth onChange={(e) => { setRequiredCourse(e.target.value) }} />
+                    <TextField label="Required Skills" margin="normal" required fullWidth onChange={(e) => { setRequiredSkills(e.target.value) }} />
+                    <TextField label="TA Stats" margin="normal" required fullWidth onChange={(e) => { setTaStats(e.target.value) }} />
+                    <TextField label="Notes" margin="normal" required fullWidth onChange={(e) => { setNotes(e.target.value) }} />
+                    <TextField label="Deadline" margin="normal" required fullWidth onChange={(e) => { setDeadline(e.target.value) }} />
+                    <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Post Job</LoadingButton>
                     <Button component={RouterLink} variant="text" to='/home' sx={{ mt: 4, mb: 3 }} >Cancel</Button>
                     <FormHelperText>{message}</FormHelperText>
                 </Box>
