@@ -14,6 +14,7 @@ const Jobs: React.FC = () => {
     const [jobs, setJobs] = useState([]); 
 
     useEffect(() => {
+        // get jobs and display them
         api.getJobs().then(res => {
             if (res !== undefined) {
                 setJobs(res)

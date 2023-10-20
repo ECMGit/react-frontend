@@ -9,7 +9,7 @@ import api from '../../services/server'
 
 
 const PostJob: React.FC = () => {
-
+    // Job form data storage
     const [title, setTitle] = useState("");
     const [courseId, setCourseId] = useState("");
     const [courseSchedule, setCourseSchedule] = useState("");
@@ -26,6 +26,7 @@ const PostJob: React.FC = () => {
 
 
     const handleSubmit = () => {
+        // submit job
         api.postJob({
             title: title,
             courseId: parseInt(courseId),
@@ -39,6 +40,7 @@ const PostJob: React.FC = () => {
             deadlineToApply: new Date(deadline),
             facultyId: 1, // TODO: Make this read the logged in user's ID
         }).then((error) => {
+            // Build error message
             const resMessage =
                 (error.response &&
                     error.response.data &&
