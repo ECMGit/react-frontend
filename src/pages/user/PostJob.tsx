@@ -38,7 +38,17 @@ const PostJob: React.FC = () => {
             notes: notes,
             deadlineToApply: new Date(deadline),
             facultyId: 1, // TODO: Make this read the logged in user's ID
-        })
+        }).then((error) => {
+            const resMessage =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+
+            setLoading(false);
+            setMessage(resMessage);
+        });
     }
 
     return (
