@@ -56,7 +56,7 @@ const PostJob: React.FC = () => {
                     <TextField label="Required Course" margin="normal" required fullWidth onChange={(e) => { setRequiredCourse(e.target.value) }} />
                     <TextField label="Required Skills" margin="normal" required fullWidth onChange={(e) => { setRequiredSkills(e.target.value) }} />
                     <TextField label="TA Stats" margin="normal" required fullWidth onChange={(e) => { setTaStats(e.target.value) }} />
-                    <TextField label="Notes" margin="normal" required fullWidth onChange={(e) => { setNotes(e.target.value) }} />
+                    <TextField label="Notes" margin="normal" fullWidth onChange={(e) => { setNotes(e.target.value) }} />
                     <TextField label="Deadline" margin="normal" required fullWidth onChange={(e) => { setDeadline(e.target.value) }} />
                     <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Post Job</LoadingButton>
                     <Button component={RouterLink} variant="text" to='/home' sx={{ mt: 4, mb: 3 }} >Cancel</Button>
